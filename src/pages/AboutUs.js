@@ -1,11 +1,15 @@
 // import components
 import AboutSection from "../components/AboutSection";
+import Benefits from "../components/Benefits";
+import FaqSection from "../components/FaqSection";
 
 function AboutUs() {
   return (
-    <div>
+    <>
       <AboutSection />
-    </div>
+      <Benefits />
+      <FaqSection />
+    </>
   );
 }
 
