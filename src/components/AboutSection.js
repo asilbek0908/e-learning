@@ -1,63 +1,62 @@
-// import img
 import homeIntro from "../img/home-intro.jpg";
 // import styled components
-import styled from "styled-components";
+import { About, Description, Hide, Image } from "../styles";
+
+// framer motion
+import { motion } from "framer-motion";
 
 function AboutSection() {
+  // Framer motion
+  const titleAnim = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 1.2 } },
+  };
+
+  const container = {
+    hidden: { x: 100 },
+    show: {
+      x: 0,
+      transition: {
+        duration: 1.5,
+        ease: "easeOut",
+        staggerChildren: 0.5,
+        when: "afterChildren",
+      },
+    },
+  };
+
   return (
     <About>
-      <Description className="description">
-        <div className="title">
+      <Description>
+        <motion.div
+          className="title"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
           <Hide>
-            <h2>Be educated so that</h2>
+            <motion.h2 variants={titleAnim}>Be educated so that</motion.h2>
           </Hide>
           <Hide>
-            <h2>
+            <motion.h2 variants={titleAnim}>
               you<span> can change</span>
-            </h2>
+            </motion.h2>
           </Hide>
           <Hide>
-            <h2>the world.</h2>
+            <motion.h2 variants={titleAnim}>the world.</motion.h2>
           </Hide>
-        </div>
+        </motion.div>
         <p>
           An educated mind can teach many things. An educated mind is better
           than empty mind
         </p>
         <button>About Us</button>
       </Description>
-      <Image className="about-img">
+      <Image>
         <img src={homeIntro} alt="book store" />
       </Image>
     </About>
   );
 }
-
-// Styled Components
-
-const About = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 5rem 10rem;
-`;
-
-const Description = styled.div`
-  flex: 1;
-`;
-
-const Image = styled.div`
-  overflow: hidden;
-  flex: 1;
-  img {
-    width: 100%;
-    height: 80vh;
-    object-fit: cover;
-  }
-`;
-
-const Hide = styled.div`
-  overflow: hidden;
-`;
 
 export default AboutSection;
